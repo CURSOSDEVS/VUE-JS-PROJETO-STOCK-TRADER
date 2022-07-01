@@ -17,6 +17,9 @@
 import Header from './components/Cp-Header.vue'
 
 export default {
-  components:{ Header }
+  components:{ Header },
+  created(){
+    this.$store.dispatch('initStocks')
+  }
  }
 </script>
