@@ -1,17 +1,22 @@
 <template>
     <v-flex class="pr-3 pt-3" xs12 md6 lg4>
-        <v-card class="green darken-3 white--text">
+        <v-card class="blue darken-3 white--text">
             <v-card-title class="headline">
-                <strong>{{stock.name}} <small>(Preco: {{stock.price}})</small></strong>
+                <strong>
+                    {{stock.name}} 
+                    <small>
+                        (Preco: {{stock.price}} | Qtde: {{stock.id}})
+                    </small>                    
+                </strong>
             </v-card-title>
         </v-card>
         <v-card>
             <v-container fill-height>
                 <v-text-field label="Quantidade" type="number"
                             v-model.number="quantity"></v-text-field>
-                <v-btn class="green darken-3 white--text"
+                <v-btn class="blue darken-3 white--text"
                         :disabled = 'quantity <=0 || !Number.isInteger(quantity)'
-                        @click="byStock()">Comprar</v-btn>
+                        @click="sellStock()">Vender</v-btn>
             </v-container>
         </v-card>
     </v-flex>
@@ -26,13 +31,13 @@
             }
         },
         methods: {
-            byStock(){
+            sellStock(){
                 const order = {
                     stockId: this.stock.id,
                     stockPrice: this.stock.price,
                     quantity: this.quantity
                 }
-                this.$store.dispatch('buyStock',order)
+                this.$store.dispatch('sellStock',order)
                 
                 // eslint-disable-next-line
                 console.log(order)
