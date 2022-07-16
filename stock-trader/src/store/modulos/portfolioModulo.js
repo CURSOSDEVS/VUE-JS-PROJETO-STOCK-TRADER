@@ -4,10 +4,11 @@ export default{
         stocks: []
     },
     mutations:{
-        buyStock(state,{ stockId, quantity, stockPrice}) {
+        buyStock(state,{ stockId,quantity, stockPrice }) {
             const record = state.stocks.find(element => element.id == stockId)
+           // console.log('Record: '+record)
             if(record){
-                record.quantity =+ quantity
+                record.quantity += quantity
             }else{
                 state.stocks.push({
                     id: stockId,
@@ -23,7 +24,7 @@ export default{
             }   else{
                 state.stocks.splice(state.stocks.indexOf(record), 1)
             }
-            state.funds =+ stockPrice * quantity
+            state.funds += stockPrice * quantity
         }
     },
     actions:{

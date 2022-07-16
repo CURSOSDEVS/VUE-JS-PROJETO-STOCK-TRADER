@@ -5,7 +5,7 @@
                 <strong>
                     {{stock.name}} 
                     <small>
-                        (Preco: {{stock.price}} | Qtde: {{stock.id}})
+                        (Preco: {{stock.price}} | Qtde: {{stock.quantity}})
                     </small>                    
                 </strong>
             </v-card-title>
@@ -15,7 +15,7 @@
                 <v-text-field label="Quantidade" type="number"
                             v-model.number="quantity"></v-text-field>
                 <v-btn class="blue darken-3 white--text"
-                        :disabled = 'quantity <=0 || !Number.isInteger(quantity)'
+                        :disabled ='quantity <=0 || !Number.isInteger(quantity)'
                         @click="sellStock()">Vender</v-btn>
             </v-container>
         </v-card>
