@@ -26,6 +26,10 @@ export default{
                 state.stocks.splice(state.stocks.indexOf(record), 1)
             }
             state.funds += stockPrice * quantity
+        },
+        setPortfolio(state, stockPortfolio){
+            state.funds = stockPortfolio.funds
+            state.stocks = stockPortfolio.stockPortfolio ? stockPortfolio.stockPortfolio:[]
         }
     },
     actions:{
